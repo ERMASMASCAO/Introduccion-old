@@ -133,18 +133,69 @@ $media = array_sum($temperatura)/count($temperatura);
 print_r($minimas);
 print_r($maximas);
 echo($media);
+echo "<br>";
 
 /*
 Ordenar según nuestro criterio sort3.php
 Tenemos un array asociativo con nombre => descripción Realiza un script
 php que ordene el array por la longitud de la descripción.
 */
+function sort3($a, $b) {
+    if (strlen($a) == strlen($b)) {
+        return 0;
+    }
+    return (strlen($a) < strlen($b)) ? -1 : 1;
+
+}
 $nombre=array(
     "Juan"=>"Es un tio guapo",
     "María"=>"Es una persona bien",
     "Andrés"=>"No tiene ni idea de nada",
     "Berta"=>"Esta ahí sin mas");
 
-    uasort()
+    uasort($nombre,'sort3');
+    print_r($nombre);
+    echo "<br>";
+
+/*
+Password aleatorio password.php
+Crea una función que genere un password aleatorio. La función tiene como parámetros los siguientes:
+function rand_Pass($upper = 1, $lower = 5, $numeric = 3, $other = 2)
+Funciones a utilizar: chr — Devuelve un caracter específico rand — Genera un número entero aleatorio shuffle — Mezcla un array
+Por ejemplo, chr(rand(65, 90)); devuelve un carácter en mayúscula (ver tabla ASCII)
+*/
+echo "<br>";
+function rand_Pass($upper = 1, $lower = 5, $numeric = 3, $other = 2){
+    $pass = [];
+    for ($i=0; $i < $upper; $i++) { 
+        $pass[] = chr(rand(65,90));
+    }
+    for ($i=0; $i < $lower; $i++) { 
+        $pass[] = chr(rand(97,122));
+    }
+    for ($i=0; $i < $numeric; $i++) { 
+        $pass[] = chr(rand(48,57));
+    }
+    for ($i=0; $i < $other; $i++) { 
+        $pass[] = chr(rand(33,47));
+    }
+    shuffle($pass);
+    return implode($pass);
+}
+echo (rand_Pass(10, 4, 5, 1)); 
+echo "<br>";
+
+/*
+Callbacks callback.php
+Escribe un script php que calcule la longitud máxima y mínima de las cadenas de un array.
+Funciones a utilizar: array_map — Aplica un callback a los elementos de los arrays
+dados max — Encontrar el valor más alto min — Encontrar el valor más bajo.
+*/
+
+$a = ["hola", "esto", "es", "un", "ejemplo"];
+$long = array_map('strlen', $a);
+print_r($long);
+
+echo "<br>";
 
 ?>
