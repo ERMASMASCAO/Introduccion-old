@@ -191,11 +191,47 @@ Escribe un script php que calcule la longitud máxima y mínima de las cadenas d
 Funciones a utilizar: array_map — Aplica un callback a los elementos de los arrays
 dados max — Encontrar el valor más alto min — Encontrar el valor más bajo.
 */
-
 $a = ["hola", "esto", "es", "un", "ejemplo"];
 $long = array_map('strlen', $a);
-print_r($long);
+echo("<p>El maximo es: " . max($long) . " " . "El minimo es: " . " ". min($long));
+echo "</p><br>";
 
-echo "<br>";
+/*
+Partlist partlist.php
+Escribe función partlist que devuelva todas las formas de dividir una lista (array) de al menos dos elementos en
+dos partes no vacías que contengan todos los elementos.
+*- Cada dos partes no vacías estarán en un par
+*- Cada parte estará en una cadena
+*- Los elementos de un par deben estar en el mismo orden que en el array original
+Por ejemplo,
 
+["Seguro", "que", "apruebo", "esta", "asignatura"] -->
+Array
+(
+    [0] => Array
+        (
+            [0] => Seguro
+            [1] => que apruebo esta asignatura
+        )
+    [1] => Array
+        (
+            [0] => Seguro que
+            [1] => apruebo esta asignatura
+        )
+    [2] => Array
+        (
+            [0] => Seguro que apruebo
+            [1] => esta asignatura
+        )
+    [3] => Array
+        (
+            [0] => Seguro que apruebo esta
+            [1] => asignatura
+        )
+)
+Funciones a utilizar: array_slice — Extraer una parte de un array 
+implode — Une elementos de un array en un string 
+count — Cuenta todos los elementos de un array 
+print_r — Imprime información legible para humanos sobre una variable 
+*/
 ?>
