@@ -234,4 +234,41 @@ implode — Une elementos de un array en un string
 count — Cuenta todos los elementos de un array 
 print_r — Imprime información legible para humanos sobre una variable 
 */
+
+ $frase = ["Seguro", "que", "apruebo", "esta", "asignatura"];
+
+ for ($i=1; $i < count($frase); $i++) { 
+    $primerCacho = array_slice($frase, 0, $i);
+    $segundoTrozo = array_slice($frase, $i);
+    
+print_r($primerCacho);
+print_r($segundoTrozo);
+echo "</p><br>";
+
+}
+/*
+Filtros filter.php
+Para filtrar elementos de un array, podemos usar la programación tradicional 
+usando un bucle for o foreach y eligiendo aquellos elementos del array que cumplan la condición del filtro.
+*/
+$contactos = array(
+
+    array("codigo" => 1, "nombre" => "Juan Pérez",
+    "telefono" => "966112233", "email" => "juanp@gmail.com"),
+    array("codigo" => 2, "nombre" => "Ana López",
+    "telefono" => "965667788", "email" => "anita@hotmail.com"),
+    array("codigo" => 3, "nombre" => "Mario Montero",
+    "telefono" => "965929190", "email" => "mario.mont@gmail.com"),
+    array("codigo" => 4, "nombre" => "Laura Martínez",
+    "telefono" => "611223344", "email" => "lm2000@gmail.com"),
+    array("codigo" => 5, "nombre" => "Nora Jover",
+    "telefono" => "638765432", "email" => "norajover@hotmail.com"),);
+    echo '<br>';
+
+    $filtrarPor = strtolower($_GET["filtrarPor"] ?? "@gmail.com");
+    $filtrados = array_filter($contactos, function($contacto) use ($filtrarPor)
+    {return strpos(strtolower($contacto["email"]), $filtrarPor) !== FALSE;});
+
+    print_r($filtrados);
+
 ?>
